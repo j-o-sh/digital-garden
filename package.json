@@ -1,0 +1,17 @@
+{
+  "name": "digital-garden",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "This repo contains the sources for the [bard with wings](http://...) website.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "eleventy --serve --port=4000",
+    "build": "eleventy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}
