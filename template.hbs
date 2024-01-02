@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="style/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <ul class="pre-title breadcrumps">
+        {{#each path}}
+        <li>{{this}}</li>
+        {{/each}}
+      </ul>
+      <h1>{{title}}</h1>
+    </header>
+
+    {{{content}}}
+</html>
