@@ -1,9 +1,4 @@
 [[redirects]]
-from = "/"
-to = "/blog/120240102-getting-started/"
-status = 301
-
-[[redirects]]
 from = "/blog"
 to = "/blog/120240102-getting-started/"
 status = 301

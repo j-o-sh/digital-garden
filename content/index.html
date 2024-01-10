@@ -1,0 +1,35 @@
+---
+layout: base
+---
+<style>
+section {
+  align-self: center;
+  height: 80vh;
+
+  & > img {
+    height: 100%;
+    max-height: 666px;
+    object-fit: contain;
+  }
+
+  & > * { 
+    margin: 0; 
+    padding: 0;
+  }
+
+  & > nav {
+    margin-top: -50%;
+    font-size: 15vmin;
+    display: flex;
+    justify-content: center;
+  }
+}
+</style>
+
+<section>
+<h1 class="invisible">Bard with Wings</h1>
+<img src="/public/headshot.png">
+<nav>
+    <a href="/blog" title="read the blog"><i class="fa fa-book-open"></i></a>
+</nav>
+</section>

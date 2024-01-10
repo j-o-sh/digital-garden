@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Pompiere&family=Quicksand&family=Sono&family=Square+Peg&display=swap');
 
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+
 @import 'reset.css';
+@import 'classes.css';
+@import 'beautify.css';
 
 :root {
   color: whitesmoke;

@@ -9,6 +9,7 @@ module.exports = function(llty) {
   
 
   llty.addPassthroughCopy('style')
+  llty.addPassthroughCopy('public')
 
   llty.addGlobalData('layout', 'default')
   llty.addGlobalData('eleventyComputed', { 
@@ -24,9 +25,9 @@ module.exports = function(llty) {
   // Return your Object options:
   return {
     dir: {
-      input: '.',
+      input: 'content',
       output: 'dist',
-      layouts: 'layout'
+      layouts: '../layout'
     }
   }
 };
