@@ -14,11 +14,11 @@ module.exports = function(llty) {
   llty.addGlobalData('layout', 'default')
   llty.addGlobalData('eleventyComputed', { 
     path: ({ page }) => [
-      'Bard with Wings',
+      ['Bard with Wings', '/'],
       ...page.url.split('/')
                  .filter(t => t && '' !== t)
                  .slice(0, -1)
-                 .map(titalize)
+                 .map((title, i, a) => ([titalize(title), '/' + a.slice(i).join('/')]))
       ]
   })
 

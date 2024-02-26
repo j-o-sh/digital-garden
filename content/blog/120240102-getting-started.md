@@ -1,3 +1,8 @@
+---
+tags: blog
+title: Getting Started
+published: 120240102
+---
 # Getting started
 
 So this is the <bww-random>420</bww-random>th attempt of launching a blog/personal website/digital garden I undertake. As always, life gets in the way and customer projects and going climbing is often more appealing than finally sitting down to create your own litle slice of web.

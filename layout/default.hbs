@@ -4,10 +4,9 @@ layout: base
     <header>
       <ul class="pre-title breadcrumps">
         {{#each path}}
-        <li>{{this}}</li>
+        <li><a href="{{ this.[1] }}">{{ this.[0] }}</a></li>
         {{/each}}
       </ul>
-      <h1>{{title}}</h1>
     </header>
 
     {{{content}}}
