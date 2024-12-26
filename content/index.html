@@ -19,15 +19,29 @@ section {
   
 
   & > nav {
-    font-size: 8vmin;
+    font-size: 6vmin;
     display: flex;
+    gap: 1em;
+    margin-top: .5em;
     justify-content: center;
+    align-items: start;
     animation: 1s linear 1s infinite alternate pulse;
     transition: all 250ms linear;
+    
+    & * {
+      transition: all 250ms linear;
+    }
 
-    &:hover {
+    & a:hover {
+      margin-top: -2vmin;
+      font-size: 8vmin;
       animation: .5s linear .2s infinite alternate pulse;
       text-shadow: rgba(253,186,0,0.63) 0px 0px 16px;
+    }
+
+    &:has(a:hover) a:not(:hover) {
+      font-size: 5vmin;
+      color: var(--c-faded);
     }
   }
 }
@@ -47,5 +61,6 @@ section {
 <img src="/public/octo.png">
 <nav>
     <a href="/blog" title="read the blog"><i class="fa fa-book-open"></i></a>
+    <a href="/playground/cassette" title="Playing with audio, css and nostalgia"><i class="fa fa-explosion"></i></a>
 </nav>
 </section>

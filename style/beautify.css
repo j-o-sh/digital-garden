@@ -1,4 +1,21 @@
+:root {
+  --spring-green: hsla(145, 100%, 61%, 1);
+  --aerospace-orange: hsla(19, 100%, 50%, 1);
+  --baby-powder: hsla(30, 100%, 99%, 1);
+  --davys-gray: hsla(258, 9%, 29%, 1);
+  --eerie-black: hsla(0, 0%, 10%, 1);
+
+  --c-emphasis: var(--aerospace-orange);
+  --c-faded: var(--davys-gray);
+  --c-surface-dark: var(--davys-gray);
+
+  --c-red: #960018; 
+  --c-green: var(--spring-green);
+  --c-black: var(--eerie-black);
+  --c-white: var(--baby-powder);
+}
+
 a {
-  color: #fd4f00;
+  color: var(--c-emphasis);
 }
 

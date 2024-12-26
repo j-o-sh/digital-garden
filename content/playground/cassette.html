@@ -1,0 +1,237 @@
+<h1>Playing with css, audio and nostalgia</h1>
+
+<p>
+  For some reason I have the idea of a cassette-player-like Swift app now running around my head for several weeks, so I needed to do <b>something</b> with it... 
+</p>
+<p>
+  So here is a quick play with the aestetik that allowed me to explore some kinda clever radio buttons and css animation stuff as well as gave me an excuse for playing with the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio Api</a> which I admit, has nothing to do with swift but I guess that's yust how my brain works. 😅
+</p>
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Zeyada&display=swap');
+
+.cassette-player { 
+  margin: 0;
+  margin-top: 3em;
+  height: 100%;
+  
+  --c-darkgray: #444;
+  --c-gray: #666;
+  --c-control-panel: var(--c-white);
+  --c-buttons: var(--c-white);
+  --c-button-text: var(--c-black);
+  
+  --s-cassette-width: 20em;
+
+  color: var(--c-black);
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
+}
+* {  box-sizing: border-box; }
+.cover {
+  --full-tape: 8em;
+  --tape-played: 0;
+  background: var(--c-green);
+  width: var(--s-cassette-width);
+  aspect-ratio: 2;
+  border-radius: .5em;
+  padding: .5em 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25em;
+}
+.label {
+  background: var(--c-white);
+  height: 3em;
+  border-radius: .25em;
+  font-family: Zeyada;
+  position: relative;
+  & > * {
+    font-family: Zeyada;
+    font-size: 2.5rem;
+    margin: 0 1em;
+  }
+}
+.cutout {
+  background: var(--c-gray);
+  height: 3em;
+  border-radius: 3em;
+  margin: 0 3em;
+  position: relative;
+  overflow: hidden;
+}
+
+.reel {
+  --cutout-size: 3em;
+  --tape-size: 6em;
+  background-color: var(--c-black);
+  border-radius: var(--tape-size);
+  height: var(--tape-size);
+  aspect-ratio: 1;
+  position: absolute;
+  top: calc(calc(0.5 * var(--cutout-size)) - calc(0.5 * var(--tape-size)));
+  
+  
+  
+  --horizontal-offset: calc(calc(0.5 * var(--cutout-size)) + calc(-0.5 * var(--tape-size)));
+  &.left {
+    left: var(--horizontal-offset);
+    --tape-size: calc(3em + calc(var(--full-tape) * calc(1 - var(--tape-played))));
+  }
+  &.right {
+    right: var(--horizontal-offset);
+    --tape-size: calc(3em + calc(var(--full-tape) * calc(var(--tape-played))));
+  }
+}
+
+.gear {
+  border: .3em solid var(--c-darkgray);
+  background-color: var(--c-gray);
+  position: absolute;
+  left: calc(50% - 1.5em);
+  top: calc(50% - 1.5em);
+  height: 3em;
+  width: 3em;
+  border-radius: 1.5em;
+  
+  & .teeth {
+    height: 100%;
+    width: 100%;
+    border: .3em dashed var(--c-darkgray);
+    border-radius: 100%;
+  }
+}
+
+.controls {
+  width: var(--s-cassette-width);
+  display: flex;
+  padding-top: .25em;
+  justify-content: center;
+  gap: .5em;
+  position: relative;
+  
+  &::before {
+    content: "";
+    background-color: var(--c-control-panel);
+    border-radius: .25em;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -.25em;
+    height: .25em;
+  }
+  
+  & input { 
+    appearance: none; 
+    position: absolute;
+  }
+  & label {
+    background: var(--c-buttons);
+    color: var(--c-button-text);
+
+    &:has([data-name=record]) {
+      color: var(--c-red);
+    }
+    
+    height: 2em;
+    width: 2.5em;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    border-bottom-left-radius: .25em;
+    border-bottom-right-radius: .25em;
+    
+    &:has(:checked) {
+      height: .5em;
+      & > * {
+        visibility: hidden;
+      }
+    }
+  }
+}
+
+/**
+ * make it spim
+ */
+:has([data-name=play]:checked) .gear,
+:has([data-name=record]:checked) .gear {
+  animation: 2.5s linear infinite turn;
+}
+:has([data-name=forward]:checked) .gear {
+  animation: .4s linear infinite turn;
+}
+:has([data-name=backward]:checked) .gear {
+  animation: .4s linear infinite turnback;
+}
+@keyframes turnback {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+@keyframes turn {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(-359deg);
+  }
+}
+</style>
+
+<article class="cassette-player">
+<div class="cassette cover">
+  <div class="label"> <span>My Mix 2</span></div>
+  <div class="cutout">
+    <div class="reel left">
+      <div class="gear">
+        <div class="teeth"></div>
+      </div>
+    </div>
+    <div class="reel right">
+      <div class="gear">
+        <div class="teeth"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<form class="controls">
+  <label><i class="fa fa-backward"></i>
+    <input type="radio" name="control" data-name="backward"/>
+  </label>
+  <label><i class="fa fa-circle"></i>
+    <input type="checkbox" name="control" data-name="record"/>
+  </label>
+  <label><i class="fa fa-play"></i>
+    <input type="radio" name="control" data-name="play"/>
+  </label>
+  <label><i class="fa fa-pause"></i>
+    <input type="radio" name="control" data-name="pause"/>
+  </label>
+  <label><i class="fa fa-stop"></i>
+    <input type="checkbox" name="control" data-name="stop"/>
+  </label>
+  <label><i class="fa fa-forward"></i>
+    <input type="radio" name="control" data-name="forward"/>
+  </label>
+</form>
+</article>
+
+
+<script type="module">
+document.addEventListener('change', e => { switch (e.target.dataset.name) {
+  case 'stop': 
+    setTimeout(() => document.querySelector('form.controls').reset(), 350)
+    break;
+  default:
+    console.log('🚀', e.target.dataset.name);
+    break;
+}})
+</script>

@@ -8,7 +8,7 @@ published: 120240226
 
 I have revisited Swift development on and off, again and again for several years now. The isse is that while I **really** like the language, the build/code environment really anoys me.
 
-Since I replaced [VSCode]() with [Neovim]() now this gets even worse since I have grown even more unfirgiving against bad application design that hinders my flow. 
+Since I replaced [VSCode](https://github.com/microsoft/vscode) with [Neovim](https://neovim.io) now this gets even worse since I have grown even more unfirgiving against bad application design that hinders my flow. 
 
 The way Swift and mainly UIKit is tighly integrated with what appears to be the most hated code editor out there has always been strange to me and I have made several attempts to rectify this and have some possibility to create applications with whatever code editor and build environment I choose. These efforts sadly always ended in a very big and unusable mess.
 
